@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playerWins=0;
+        let computerWins=0;
+        let playerInput, computerInput;
+
+        function playerSelection () {
+             playerInput = prompt("What will you choose?");
+             playerInput = playerInput.toLowerCase();
+             
+             return playerInput;
+        }
+
+        function checkInput (playerInput) {
+            
+            
+            while (playerInput != "rock" && playerInput !="paper" && playerInput != "scissors") {
+                console.log ("Not right");
+                playerInput = prompt ("Insert one of the following: rock, paper or scissors");
+            }
+
+            return playerInput;
+        }
+
+        function computerSelection () {
+            let randNumber = Math.random()*3;
+            if (randNumber <= 1) {
+                computerInput = "rock";
+            }
+            else if (randNumber <= 2) {
+                computerInput = "paper";
+            }
+            else {
+                computerInput = "scissors";
+            }
+            return computerInput;
+        }
+
+        function playRound (playerInput, computerInput) {
+
+            console.log("Player chose: " + playerInput);
+            console.log("Computer chose: " + computerInput);
+
+            if (playerInput === computerInput) {
+                console.log("It's a tie!");
+            }
+
+            else if (playerInput == "rock") {
+                if(computerInput == "scissors") {
+                    console.log ("You won!");
+                    playerWins++;
+                }
+                else {
+                    console.log ("You lost!");
+                    playerInput++;
+                }
+            }
+
+            else if (playerInput == "paper") {
+                if (computerInput == "rock") {
+                    console.log ("You won!");
+                    playerWins++;
+                }
+                else {
+                    console.log ("You lost!");
+                    computerWins++;
+                }
+            }
+
+            else {
+                if (computerInput == "paper") {
+                    console.log ("You won!");
+                    playerWins++;
+                }
+                else {
+                    console.log ("You lost!");
+                    computerWins++;
+                }
+            } 
+        }
+
+        playerInput = playerSelection();
+        playerInput = checkInput(playerInput);
+        computerInput = computerSelection();
+        playRound(playerInput, computerInput);
+
+    </script>
+</body>
+</html>
