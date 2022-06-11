@@ -15,7 +15,7 @@
         function playerSelection () {
              playerInput = prompt("What will you choose?");
              playerInput = playerInput.toLowerCase();
-             
+
              return playerInput;
         }
 
@@ -23,7 +23,6 @@
             
             
             while (playerInput != "rock" && playerInput !="paper" && playerInput != "scissors") {
-                console.log ("Not right");
                 playerInput = prompt ("Insert one of the following: rock, paper or scissors");
             }
 
@@ -87,10 +86,24 @@
             } 
         }
 
-        playerInput = playerSelection();
-        playerInput = checkInput(playerInput);
-        computerInput = computerSelection();
-        playRound(playerInput, computerInput);
+        function game () {
+
+
+            for (let i = 0; i < 5; i++) {
+                playerInput = playerSelection();
+                playerInput = checkInput(playerInput);
+                computerInput = computerSelection();
+                playRound (playerInput, computerInput);
+            }
+            if (playerWins == 5) {
+                return ("You won the game!");
+            }
+            else {
+                return ("The computer won the game!");
+            }
+        }
+        
+        console.log (game ());
 
     </script>
 </body>
